@@ -1,0 +1,3 @@
+    <%= turbo_stream.append "response" do %>
+        <%= render partial: 'chat/show', locals: {response: response} %>
+    <% end %> 

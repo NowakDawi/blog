@@ -1,0 +1,4 @@
+    <%= turbo_stream.append "response" do %>
+
+        <%= render partial: 'claude/show', locals: {response: response} %>
+    <% end %> 
