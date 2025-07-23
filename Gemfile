@@ -74,3 +74,4 @@ gem 'faraday-multipart'
 gem "mimemagic", "~> 0.4.0"  # do rozpoznawania MIME-type pliku
 gem "marcel"
 gem 'pdf-reader'
+gem 'json'

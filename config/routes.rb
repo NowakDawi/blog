@@ -19,10 +19,13 @@ Rails.application.routes.draw do
   
   # get "/chat", to: "chat#index", as: "index_chat"
 
+  post '/claude', to: 'claude#chat', as: "claude"
+  # post '/claude', to: 'claude#upload', as: "claude"
+
+
   root "claude#index"
-  post "/upload_and_analyze", to: "analysis#create", as: "claude"
+  # post "/upload_and_analyze", to: "analysis#create", as: "claude"
   
   get "/claude", to: "claude#index", as: "index_claude"
-
 
 end

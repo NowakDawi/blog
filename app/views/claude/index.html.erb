@@ -3,7 +3,7 @@
 
 <h1>Zapytaj Claude</h1>
 
-<%= form_with url: claude_path, method: :post, multipart: true, data: { turbo: false } do |form| %>
+<%= form_with url: claude_path, method: :post, multipart: true do |form| %>
   <div>
     <%= form.text_area :question, rows: 5, cols: 60 %>
   </div>

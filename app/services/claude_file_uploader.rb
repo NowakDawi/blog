@@ -1,9 +1,12 @@
 # app/services/claude_file_uploader.rb
 require 'faraday'
 require 'faraday/multipart'
+require 'json'
 
 class ClaudeFileUploader
   API_URL = 'https://api.anthropic.com/v1/files'.freeze
+   API_VERSION   = '2023-06-01'.freeze
+ BETA_HEADER   = 'files-api-2025-04-14'.freeze
 
   def initialize(api_key: ENV.fetch('ANTHROPIC_API_KEY'))
     @conn = Faraday.new(url: API_URL) do |f|
@@ -15,21 +18,27 @@ class ClaudeFileUploader
   end
 
   def upload(file_param, metadata: {})
-    payload = { 
-      file: Faraday::Multipart::FilePart.new(
-        file_param.path, 
-        file_param.content_type, 
+    payload = {
+      file: Faraday::UploadIO.new(
+       file_param.path,
+        file_param.content_type,
         file_param.original_filename
       )
-    }
-    payload.merge!(metadata.transform_keys(&:to_s))
+    }.merge(metadata.transform_keys(&:to_s))
 
     response = @conn.post do |req|
-      req.headers['Authorization'] = "Bearer #{@api_key}"
+      req.headers['x-api-key']        = @api_key
+      req.headers['anthropic-version']= API_VERSION
+      req.headers['anthropic-beta']   = BETA_HEADER
       req.body = payload
     end
-    # puts response.inspect
-    # raise "Upload failed (#{response.status}): #{response.body}" unless response.success?
-    return @api_key
+
+
+        unless response.success?
+   raise "Upload failed (#{response.status}): #{response.body}"
+    end
+
+        JSON.parse(response.body)
+
   end
 end
