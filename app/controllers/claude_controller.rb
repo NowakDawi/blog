@@ -16,6 +16,8 @@ class ClaudeController < ApplicationController
       end
     end
   end
+
+
 def upload
     service = ClaudeService.new
     result = service.upload_file(params[:file])
@@ -32,6 +34,4 @@ def upload
       end
     end
   end
-
-
 end

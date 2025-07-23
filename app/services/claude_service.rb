@@ -24,7 +24,7 @@ class ClaudeService
     self.class.post('/messages', headers: @headers, body: body.to_json)
   end
 
-    def upload_file(file)
+  def upload_file(file)
     # file to ActionDispatch::Http::UploadedFile z Rails (params[:file])
     response = self.class.post(
       '/files',
