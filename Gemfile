@@ -64,6 +64,7 @@ end
 
 gem 'dotenv-rails'
 gem 'httparty'
+gem 'httmultiparty'
 
 gem 'redcarpet'
 
@@ -75,3 +76,5 @@ gem "mimemagic", "~> 0.4.0"  # do rozpoznawania MIME-type pliku
 gem "marcel"
 gem 'pdf-reader'
 gem 'json'
+gem 'mime-types'
+

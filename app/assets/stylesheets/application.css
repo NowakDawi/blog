@@ -28,4 +28,8 @@
         h1, h2, h3 {
             color: #555;
         }
+
+        .response {
+            border-bottom: solid 1px;
+        }
     
