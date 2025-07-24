@@ -69,7 +69,7 @@ gem 'httmultiparty'
 gem 'redcarpet'
 
 gem "anthropic"
-gem "faraday", "~> 2.0"
+gem "faraday", "~> 2.13"
 gem 'faraday-net_http'
 gem 'faraday-multipart'
 gem "mimemagic", "~> 0.4.0"  # do rozpoznawania MIME-type pliku
